@@ -40,6 +40,11 @@ namespace Project.Infrastructure.Persitence.Repositories
 									   string includeString = null,
 									   bool disableTracking = true)
 		{
+			if (string.IsNullOrEmpty(includeString))
+			{
+				throw new ArgumentException($"'{nameof(includeString)}' cannot be null or empty.", nameof(includeString));
+			}
+
 			IQueryable<T> query = _context.Set<T>();
 			if (disableTracking) query = query.AsNoTracking();
 

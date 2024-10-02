@@ -36,7 +36,6 @@ namespace Project.Infrastructure.Persitence.Repositories
 
 		}
 
-
 		/// <summary>
 		/// Select by Id
 		/// </summary>
@@ -76,15 +75,6 @@ namespace Project.Infrastructure.Persitence.Repositories
 			return obj;
 		}
 
-		public async Task<User> ChangeUserStatusASync(long userId, long userStatusId)
-		{
-			User objPrev = await _context.Set<User>().FindAsync(userId);
-			objPrev.UserStatusId = userStatusId;
-			_context.Entry(objPrev).State = EntityState.Detached;
-			_context.Entry(objPrev).State = EntityState.Modified;
-			await _context.SaveChangesAsync();
-			return objPrev;
-		}
 
 		public Task<User> GetByEmail(string email)
 		{
@@ -92,23 +82,7 @@ namespace Project.Infrastructure.Persitence.Repositories
 			return objPrev;
 		}
 
-		public async Task UpdatePasswordRecoveryToken(long userId, Guid token)
-		{
-			var user = await SelectByIdASync(userId);
-			if (user != null)
-			{
-				user.RecoveryToken = token;
-				user.TokenExpiration = DateTime.Now.AddHours(1);
-				await UpdateASync(userId, user);
-			}
-		}
-
-
-		public Task<User> GetByPasswordRecoveryToken(Guid token)
-		{
-			return _context.Users.FirstOrDefaultAsync(x => x.RecoveryToken == token);
-		}
-
+	
 
 
 

@@ -1,6 +1,6 @@
 @WebAppCQRS_HostAddress = http://localhost:5113
 
-GET {{WebAppCQRS_HostAddress}}/weatherforecast/
+GET {{WebAppCQRS_HostAddress}}/
 Accept: application/json
 
 ###
