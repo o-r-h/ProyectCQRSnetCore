@@ -37,9 +37,9 @@ namespace WebAppCQRS.Controllers
 			var result = await _mediator.Send(command);
 
 			if (result)
-				return Ok("Usuario creado con éxito");
+				return Ok("User created");
 
-			return BadRequest("Error al crear el usuario");
+			return BadRequest("Error creating user");
 		}
 
 

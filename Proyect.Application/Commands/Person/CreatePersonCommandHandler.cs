@@ -20,16 +20,7 @@ namespace Project.Application.Commands.Person
         {
             var dto = request.Person;
 			var person = _mapper.Map<Domain.Entities.Person>(request.Person);
-			//var person = new Domain.Entities.Person
-   //         {
-   //             Name = dto.Name,
-   //             LastName = dto.LastName,
-   //             BirthDate = dto.BirthDate,
-   //             Email = dto.Email,
-   //             PhoneNumber = dto.PhoneNumber
-   //         };
-
-            person = await _personRepository.AddAsync(person);
+		    person = await _personRepository.AddAsync(person);
             if (person == null || person.Id == 0)
             {
                 throw new ApplicationException("Failed to create person. The repository returned null or an invalid ID.");

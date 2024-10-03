@@ -19,9 +19,7 @@ namespace Project.Application.Commands.User
 		public async Task<bool> Handle(CreateUserCommand request, CancellationToken cancellationToken)
 		{
 			var dto = request.UserDto;
-			// Encriptar la contraseña del usuario
 			var hashedPassword = _passwordHasher.HashPassword(dto.Password);
-
 			var user = new Domain.Entities.User
 			{
 				Email = dto.Email,
@@ -29,10 +27,7 @@ namespace Project.Application.Commands.User
 				FirstName = dto.FirstName,
 				LastName = dto.LastName
 			};
-
-			// Guardar usuario en la base de datos
 			await _userRepository.Insert(user);
-
 			return true;
 		}
 	}

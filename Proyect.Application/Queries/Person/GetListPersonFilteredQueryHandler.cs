@@ -2,6 +2,9 @@
 using MediatR;
 using Project.Application.DTOs.Person;
 using Project.Application.Interfaces.Repositories;
+using Project.Application.ValueObjects;
+using Project.Domain.Entities;
+using System.Linq.Expressions;
 
 namespace Project.Application.Queries.Person
 {
@@ -18,23 +21,21 @@ namespace Project.Application.Queries.Person
 
 		public async Task<List<PersonListDto>> Handle(GetListPersonFilteredQuery request, CancellationToken cancellationToken)
 		{
-			// Obtener todas las personas desde el repositorio
-			var persons = await _repository.GetAllAsync();
 
-			// Aplicar filtros
+			Expression<Func<Domain.Entities.Person, bool>> predicate = p => true;
+
 			if (!string.IsNullOrEmpty(request.Filter.NameAndLastName))
 			{
-				persons = persons.Where(p =>
-					(p.Name + " " + p.LastName).Contains(request.Filter.NameAndLastName, StringComparison.OrdinalIgnoreCase)).ToList();
+				predicate = predicate.And(p => (p.Name + " " + p.LastName).Contains(request.Filter.NameAndLastName));
 			}
 
 			if (!string.IsNullOrEmpty(request.Filter.Email))
 			{
-				persons = persons.Where(p => p.Email.Contains(request.Filter.Email, StringComparison.OrdinalIgnoreCase)).ToList();
+				predicate = predicate.And(p => p.Email.Contains(request.Filter.Email));
 			}
 
-			// Mapear los resultados filtrados a DTOs
-			return _mapper.Map<List<PersonListDto>>(persons);
+			var result = await _repository.GetAsync(predicate);
+			return _mapper.Map<List<PersonListDto>>(result);
 		}
 
 

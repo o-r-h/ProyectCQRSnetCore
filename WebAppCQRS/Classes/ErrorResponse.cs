@@ -1,5 +1,4 @@
-﻿using Microsoft.IdentityModel.Tokens;
-
+﻿
 namespace WebAppCQRS.Classes
 {
 	public class ErrorResponse
