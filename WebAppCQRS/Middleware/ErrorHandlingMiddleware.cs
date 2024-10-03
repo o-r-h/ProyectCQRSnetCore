@@ -29,7 +29,7 @@ namespace WebAppCQRS.Middleware
 
 		private static Task HandleExceptionAsync(HttpContext context, Exception exception)
 		{
-			var code = HttpStatusCode.InternalServerError; // 500 if unexpected
+			var code = HttpStatusCode.InternalServerError; 
 			var result = string.Empty;
 
 			switch (exception)
@@ -57,8 +57,12 @@ namespace WebAppCQRS.Middleware
 					code = HttpStatusCode.Forbidden;
 					result = JsonSerializer.Serialize(new { error = "You do not have permission to access this resource" });
 					break;
+				case DataMappingException dataMappingException:
+					code = HttpStatusCode.InternalServerError;
+					result = JsonSerializer.Serialize(new { error = "An error occurred while processing the data", details = dataMappingException.Message });
+					break;
 				default:
-					result = JsonSerializer.Serialize(new { error = "An error occurred while processing your request." });
+					result = JsonSerializer.Serialize(new { error = $"An error occurred while processing your request. Error Detail: {exception.Message} " });
 					break;
 			}
 
@@ -76,5 +80,12 @@ namespace WebAppCQRS.Middleware
 		{
 			return builder.UseMiddleware<ErrorHandlingMiddleware>();
 		}
+	}
+
+	//Extension method used to add the middleware data mappings errors
+	public class DataMappingException : Exception
+	{
+		public DataMappingException(string message) : base(message) { }
+		public DataMappingException(string message, Exception innerException) : base(message, innerException) { }
 	}
 }

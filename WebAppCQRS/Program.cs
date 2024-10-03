@@ -57,6 +57,7 @@ builder.Services.AddMediatR(options =>
 	options.RegisterServicesFromAssembly(typeof(CreateUserCommandHandler).Assembly);
 	options.RegisterServicesFromAssembly(typeof(CreatePersonCommandHandler).Assembly);
 	options.RegisterServicesFromAssembly(typeof(GetAllPersonQueryHandler).Assembly);
+	options.RegisterServicesFromAssembly(typeof(GetListPersonFilteredQueryHandler).Assembly);
 });
 
 builder.Services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());

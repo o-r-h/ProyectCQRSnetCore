@@ -45,5 +45,15 @@ namespace WebAppCQRS.Controllers
      		return Ok(result);
 		}
 
+
+		[HttpPost("GetPersonFilter")]
+		///[Authorize]
+		public async Task<IActionResult> GetPersonFilter([FromBody] PersonListRequestDto filter)
+		{
+			var command = new GetListPersonFilteredQuery(filter);
+			var result = await _mediator.Send(command);
+			return Ok(result);
+		}
+
 	}
 }

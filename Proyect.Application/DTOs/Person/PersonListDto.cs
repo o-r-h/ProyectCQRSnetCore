@@ -4,10 +4,11 @@ namespace Project.Application.DTOs.Person
 {
 	public class PersonListDto
 	{
-		public string Name { get; set; }
-		public string LastName { get; set; }
+		long Id { get; set; }
+		public string? Name { get; set; }
+		public string? LastName { get; set; }
 		public DateTime BirthDate { get; set; }
-		public string Email { get; set; }
+		public string? Email { get; set; }
 
 		public int DaysUntilBirthDate {
 			get {
