@@ -3,21 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35122.118
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppCQRS", "WebAppCQRS\WebAppCQRS.csproj", "{5AD3AC38-2369-4FA2-A2D3-1098B964A24C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAppCQRS", "WebAppCQRS\WebAppCQRS.csproj", "{5AD3AC38-2369-4FA2-A2D3-1098B964A24C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{8C0250C0-4B98-4CB6-BFFE-25D1C3E305C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.Domain", "Proyect.Domain\Project.Domain.csproj", "{28C04214-CC0B-4512-8E38-5C6429C7192D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project.Domain", "Proyect.Domain\Project.Domain.csproj", "{28C04214-CC0B-4512-8E38-5C6429C7192D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{AAAC1335-70FA-4EF0-8C2A-04321395B3EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.Application", "Proyect.Application\Project.Application.csproj", "{FE9186D5-0CE8-426C-B6CA-D21CA704C131}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project.Application", "Proyect.Application\Project.Application.csproj", "{FE9186D5-0CE8-426C-B6CA-D21CA704C131}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{6BA2154A-10E4-4D7A-92A3-B36927B884D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.Infrastructure", "Project.Infrastructure\Project.Infrastructure.csproj", "{93F1594A-247B-4DCA-970A-E4B18AE1D79E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project.Infrastructure", "Project.Infrastructure\Project.Infrastructure.csproj", "{93F1594A-247B-4DCA-970A-E4B18AE1D79E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{B1D7B0C0-ED59-490E-9752-53B75B05F904}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{7B2D4CC0-15FA-4824-A508-D056C6B69057}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.Tests", "Project.Tests\Project.Tests.csproj", "{14D48C53-F631-4ABB-9E93-5714278026AD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +45,10 @@ Global
 		{93F1594A-247B-4DCA-970A-E4B18AE1D79E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93F1594A-247B-4DCA-970A-E4B18AE1D79E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93F1594A-247B-4DCA-970A-E4B18AE1D79E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14D48C53-F631-4ABB-9E93-5714278026AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14D48C53-F631-4ABB-9E93-5714278026AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14D48C53-F631-4ABB-9E93-5714278026AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14D48C53-F631-4ABB-9E93-5714278026AD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -50,6 +58,7 @@ Global
 		{28C04214-CC0B-4512-8E38-5C6429C7192D} = {8C0250C0-4B98-4CB6-BFFE-25D1C3E305C0}
 		{FE9186D5-0CE8-426C-B6CA-D21CA704C131} = {AAAC1335-70FA-4EF0-8C2A-04321395B3EA}
 		{93F1594A-247B-4DCA-970A-E4B18AE1D79E} = {6BA2154A-10E4-4D7A-92A3-B36927B884D3}
+		{14D48C53-F631-4ABB-9E93-5714278026AD} = {7B2D4CC0-15FA-4824-A508-D056C6B69057}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {44148CA8-6A85-4E71-9535-239CC144536B}
