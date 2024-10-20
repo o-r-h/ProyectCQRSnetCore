@@ -39,20 +39,23 @@ namespace Project.Tests
 			// Arrange: configurar datos de ejemplo para la prueba
 			var filter = new PersonListRequestDto
 			{
-				FirstName = "John",
-				Email = "john@example.com"
+				FirstName = "Peter",
+				Email = "pparker@string.com"
 			};
 
 			var personList = new List<Person>
 		{
-			new Person { Name = "John", LastName = "Doe", Email = "john@example.com" },
-			new Person { Name = "Jane", LastName = "Smith", Email = "jane@example.com" }
+			new Person { Name = "Peter", LastName = "Parker", Email = "pparker@string.com" },
+			new Person { Name = "Tony", LastName = "Stark", Email = "tstark@string.com" }
 		};
 
-			// Configurar el mock para que devuelva la lista de personas
+			// Configurar el mock para que devuelva la lista de personas filtradas
 			_personRepositoryMock
 				.Setup(repo => repo.GetAsync(It.IsAny<Expression<Func<Person, bool>>>()))
-				.ReturnsAsync(personList);
+				.ReturnsAsync((Expression<Func<Person, bool>> filterExpression) =>
+				{
+					return personList.AsQueryable().Where(filterExpression).ToList();
+				});
 
 			var query = new GetListPersonFilteredQuery(filter);
 
@@ -62,7 +65,7 @@ namespace Project.Tests
 			// Assert: verificar que el resultado es correcto
 			Assert.NotNull(result);
 			Assert.Single(result); // Debería devolver solo una persona
-			Assert.Equal("John", result.First().Name);
+			Assert.Equal("Peter", result.First().Name);
 		}
 	}
 
